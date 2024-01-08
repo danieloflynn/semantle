@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const semantleRoutes = require("./routes/semantleRoutes");
 
 // Express app
 const app = express();
@@ -13,7 +14,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use("/api/");
+app.use("/api/", semantleRoutes);
 
 // Connect to DB
 mongoose
