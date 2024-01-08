@@ -22,3 +22,5 @@ const semantleSchema = new Schema({
     of: similarWordSchema,
   },
 });
+
+module.exports = mongoose.model("semantle", semantleSchema);
