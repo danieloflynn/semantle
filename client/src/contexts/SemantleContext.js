@@ -1,0 +1,31 @@
+import { createContext, useReducer } from "react";
+
+export const SemantleContext = createContext();
+
+export const SemantleReducer = (state, action) => {
+  switch (action.type) {
+    case "NEW_SEMANTLE":
+      return {
+        pastGuesses: null,
+      };
+    case "ADD_GUESS":
+      return {
+        pastGuesses: [action.payload, ...state.pastGuesses],
+      };
+    case "SET_GUESSES":
+      return {
+        pastGuesses: [...action.payload],
+      };
+    default:
+      return state;
+  }
+};
+
+export const SemantleContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(SemantleReducer, { pastGuesses: null });
+  return (
+    <SemantleContext.Provider value={{ ...state, dispatch }}>
+      {children}
+    </SemantleContext.Provider>
+  );
+};

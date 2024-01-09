@@ -45,3 +45,25 @@ a {
 .home {
   padding: 5px;
 }
+
+/* Guess form styling */
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  width: 80vw;
+  height: 30px;
+  margin: 10px;
+  border-radius: 3px;
+}
+button {
+  height: 36px;
+  font-weight: bold;
+  background-color: #f77f00;
+  color: #eae2b7;
+  border: none;
+  border-radius: 3px;
+}
