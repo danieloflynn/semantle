@@ -1,26 +1,30 @@
 const express = require("express");
 const router = express.Router();
 const {
+  getNewSemantle,
+  getSemantleWord,
   getSemantle,
-  getWordSimilarity,
   createSemantle,
   deleteSemantle,
   updateSemantle,
 } = require("../controllers/semantleController");
 
 // Get a word
-router.get("/", getSemantle);
+router.get("/", getNewSemantle);
 
 // Get a word similarity
-router.get("/:id", getWordSimilarity);
+router.get("/:id/:word", getSemantleWord);
 
-// Post a word
+// Get a word similarity
+router.get("/:id", getSemantle);
+
+// Post a semantle
 router.post("/", createSemantle);
 
-// Delete a word
+// Delete a semantle
 router.delete("/:id", deleteSemantle);
 
-// Update a word
+// Update a semantle
 router.patch("/:id", updateSemantle);
 
 module.exports = router;
