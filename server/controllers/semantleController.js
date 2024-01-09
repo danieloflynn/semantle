@@ -4,10 +4,9 @@ const mongoose = require("mongoose");
 // Get a word
 const getSemantle = async (req, res) => {
   try {
-    const word = await Semantle.collection("semantle")
-      .aggregate.sample(1)
-      .select("-similarity");
-    res.redirect("/" + word._id);
+    const word = await Semantle.aggregate([{ $sample: { size: 1 } }]);
+    console.log(word[0]._id);
+    res.redirect("/api/" + word[0]._id.toString());
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -20,19 +19,19 @@ const getWordSimilarity = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "Could not find semantle" });
   }
-  const semantle = Semantle.collection("semantle")
-    .findOne({ _id: id })
-    .select("-similarity");
+  const semantle = await Semantle.findOne({ _id: id }).select("-similarities");
+  console.log(semantle);
   res.status(200).json(semantle);
 };
 
 // Create a semantle
 const createSemantle = async (req, res) => {
   try {
-    const semantle = await Semantle.create(req.body);
+    const { word, similarities } = req.body;
+    const semantle = await Semantle.create({ word, similarities });
     res.status(200).json(semantle);
   } catch (err) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: err.message });
   }
 };
 

@@ -4,8 +4,8 @@ const {
   getSemantle,
   getWordSimilarity,
   createSemantle,
-  deleteWord,
-  updateWord,
+  deleteSemantle,
+  updateSemantle,
 } = require("../controllers/semantleController");
 
 // Get a word
