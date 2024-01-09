@@ -1,5 +1,15 @@
+import { useState } from "react";
+import GuessForm from "../components/GuessForm";
+
 const Home = () => {
-  return <div className="home"></div>;
+  const [guess, setGuess] = useState("");
+  const [pastGuesses, setPastGuesses] = useState([]);
+
+  return (
+    <div className="home">
+      <GuessForm guess={guess} setGuess={setGuess} />
+    </div>
+  );
 };
 
 export default Home;

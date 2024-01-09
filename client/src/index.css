@@ -40,3 +40,8 @@ a {
   margin-left: 15px;
   justify-self: start;
 }
+
+/* Home styling */
+.home {
+  padding: 5px;
+}
