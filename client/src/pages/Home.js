@@ -6,7 +6,7 @@ import PastGuesses from "../components/PastGuesses";
 const Home = () => {
   const { game, dispatch } = useSemantleContext();
   const [guess, setGuess] = useState("");
-  const [playing, setPlaying] = useState(true);
+  const [finished, setFinished] = useState(false);
 
   const newGame = async () => {
     const response = await fetch("/api/");

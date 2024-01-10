@@ -7,16 +7,21 @@ export const SemantleReducer = (state, action) => {
     case "NEW_GAME":
       return {
         game: action.payload,
+        guessNum: 1,
         pastGuesses: [],
       };
     case "NEW_GUESS":
+      action.payload.guessNum = state.guessNum;
+      console.log(state.pastGuesses);
       return {
         game: state.game,
+        guessNum: state.guessNum + 1,
         pastGuesses: [action.payload, ...state.pastGuesses],
       };
     case "SET_GUESSES":
       return {
         game: state.game,
+        guessNum: state.guessNum,
         pastGuesses: [...action.payload],
       };
     default:
@@ -27,6 +32,7 @@ export const SemantleReducer = (state, action) => {
 export const SemantleContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(SemantleReducer, {
     game: null,
+    guessNum: 1,
     pastGuesses: [],
   });
   return (
