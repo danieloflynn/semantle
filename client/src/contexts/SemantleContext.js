@@ -7,7 +7,7 @@ export const SemantleReducer = (state, action) => {
     case "NEW_GAME":
       return {
         game: action.payload,
-        pastGuesses: null,
+        pastGuesses: [],
       };
     case "NEW_GUESS":
       return {
@@ -27,7 +27,7 @@ export const SemantleReducer = (state, action) => {
 export const SemantleContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(SemantleReducer, {
     game: null,
-    pastGuesses: null,
+    pastGuesses: [],
   });
   return (
     <SemantleContext.Provider value={{ ...state, dispatch }}>
