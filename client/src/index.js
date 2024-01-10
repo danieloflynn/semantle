@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { SemantleContextProvider } from "./contexts/SemantleContext";
+import { StopwatchContextProvider } from "./contexts/StopwatchContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <SemantleContextProvider>
-      <App />
+      <StopwatchContextProvider>
+        <App />
+      </StopwatchContextProvider>
     </SemantleContextProvider>
   </React.StrictMode>
 );

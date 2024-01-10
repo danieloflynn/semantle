@@ -12,7 +12,6 @@ export const SemantleReducer = (state, action) => {
       };
     case "NEW_GUESS":
       action.payload.guessNum = state.guessNum;
-      console.log(state.pastGuesses);
       return {
         game: state.game,
         guessNum: state.guessNum + 1,

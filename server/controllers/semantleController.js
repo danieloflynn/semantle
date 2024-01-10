@@ -54,7 +54,6 @@ const getSemantle = async (req, res) => {
     return res.status(404).json({ error: "Could not find semantle" });
   }
   const semantle = await Semantle.findOne({ _id: id }).select("-similarities");
-  console.log(semantle);
   res.status(200).json(semantle);
 };
 
