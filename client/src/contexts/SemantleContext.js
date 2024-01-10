@@ -4,7 +4,7 @@ export const SemantleContext = createContext();
 
 export const SemantleReducer = (state, action) => {
   switch (action.type) {
-    case "NEW_SEMANTLE":
+    case "NEW_GAME":
       return {
         game: action.payload,
         pastGuesses: null,
