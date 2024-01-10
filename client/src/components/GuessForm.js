@@ -34,6 +34,10 @@ const GuessForm = ({ setFinished, setWon }) => {
       setGuess("");
     }
   };
+  const giveUp = () => {
+    pause();
+    setFinished(true);
+  };
 
   return (
     <div>
@@ -45,6 +49,7 @@ const GuessForm = ({ setFinished, setWon }) => {
           onChange={(e) => setGuess(e.target.value)}
         />
         <button>Guess</button>
+        <button onClick={giveUp}>Give Up</button>
       </form>
     </div>
   );
