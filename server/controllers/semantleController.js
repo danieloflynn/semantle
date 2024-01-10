@@ -12,6 +12,33 @@ const getNewSemantle = async (req, res) => {
   }
 };
 
+// Get a hint
+const getHint = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid) {
+    return res.status(404).json({ error: "Could not find semantle" });
+  }
+
+  const word = await Semantle.aggregate([
+    { $match: { _id: new mongoose.Types.ObjectId(id) } },
+    { $unwind: { path: "$similarities" } },
+    { $match: { "similarities.rank": { $lt: 100 } } },
+    { $sample: { size: 1 } },
+  ]);
+
+  // Unpack into a response
+  const response = {
+    simWord: word[0].similarities.simWord,
+    rank: word[0].similarities.rank,
+    word: word[0].similarities.similarity,
+  };
+
+  res.status(200).json(response);
+};
+
+// Get 100 closest words
+const getClosest100 = () => {};
+
 // Check word similarity for a semantle
 const getSemantleWord = async (req, res) => {
   const { id, word } = req.params;
@@ -89,6 +116,8 @@ const updateSemantle = async (req, res) => {
 
 module.exports = {
   getNewSemantle,
+  getHint,
+  getClosest100,
   getSemantleWord,
   getSemantle,
   createSemantle,
