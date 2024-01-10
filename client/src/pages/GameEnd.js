@@ -1,10 +1,17 @@
 import { useSemantleContext } from "../hooks/useSemantleContext";
 
 const GameEnd = ({ newGame }) => {
-  const { game, guessNum } = useSemantleContext();
+  const { game, guessNum, pastGuesses } = useSemantleContext();
   // TODO:
-  // 1. #Guessse
+  // 1. #Guessses
   // 2. Time taken
+  // 3. Closest guess
+  // 4. Average guess rank
+  const getAvgGuessRank = () => {
+    let sum = 0;
+    pastGuesses.map((e) => (sum += e.rank));
+    return sum / pastGuesses.length;
+  };
   return (
     <div className="game-end">
       <h1>You Won!</h1>
@@ -23,10 +30,13 @@ const GameEnd = ({ newGame }) => {
             </tr>
             <tr>
               <td>Closest guess</td>
-              <td>cucumber</td>
+              <td>
+                {pastGuesses.length > 0 &&
+                  pastGuesses[pastGuesses.length - 1].simWord}
+              </td>
             </tr>
             <td>Average guess rank</td>
-            <td>1000</td>
+            <td>{pastGuesses.length > 0 && getAvgGuessRank()}</td>
           </tbody>
         </table>
       </div>
