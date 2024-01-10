@@ -1,13 +1,20 @@
 import { useSemantleContext } from "../hooks/useSemantleContext";
 import { useState } from "react";
 
-const GuessForm = ({ guess, setGuess }) => {
+const GuessForm = ({ setFinished, setWon }) => {
+  const [guess, setGuess] = useState("");
   const { game, pastGuesses, dispatch } = useSemantleContext();
   const [invalidMessage, setInvalidMessage] = useState(null);
 
   const handleSubmit = async (e) => {
     // Don't reload the page
     e.preventDefault();
+
+    // Check if guess is correct
+    if (guess === game.word) {
+      setWon(true);
+      return setFinished(true);
+    }
 
     // Make sure guess hasn't already been made
     if (pastGuesses.some((e) => e.simWord === guess)) {

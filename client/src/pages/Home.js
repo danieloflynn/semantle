@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import GuessForm from "../components/GuessForm";
 import { useSemantleContext } from "../hooks/useSemantleContext";
 import PastGuesses from "../components/PastGuesses";
+import GameEnd from "./GameEnd";
 
 const Home = () => {
   const { game, dispatch } = useSemantleContext();
-  const [guess, setGuess] = useState("");
   const [finished, setFinished] = useState(false);
+  const [won, setWon] = useState(false);
 
   const newGame = async () => {
     const response = await fetch("/api/");
@@ -17,6 +18,8 @@ const Home = () => {
         payload: json,
       });
     }
+    setFinished(false);
+    setWon(false);
   };
   useEffect(() => {
     newGame();
@@ -24,8 +27,9 @@ const Home = () => {
 
   return (
     <div className="home">
-      <GuessForm guess={guess} setGuess={setGuess} />
-      <PastGuesses />
+      {!finished && <GuessForm setFinished={setFinished} setWon={setWon} />}
+      {!finished && <PastGuesses />}
+      {finished && <GameEnd newGame={newGame} />}
     </div>
   );
 };
