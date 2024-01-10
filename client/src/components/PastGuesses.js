@@ -2,7 +2,7 @@ import { useSemantleContext } from "../hooks/useSemantleContext";
 import PastGuess from "./PastGuess";
 
 const PastGuesses = () => {
-  const { pastGuesses, dispatch } = useSemantleContext();
+  const { pastGuesses } = useSemantleContext();
   return (
     <div className="container">
       <table>
