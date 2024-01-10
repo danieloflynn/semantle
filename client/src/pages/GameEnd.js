@@ -1,7 +1,9 @@
 import { useSemantleContext } from "../hooks/useSemantleContext";
+import { useStopwatchContext } from "../hooks/useStopwatchContext";
 
-const GameEnd = ({ newGame }) => {
+const GameEnd = ({ newGame, won }) => {
   const { game, guessNum, pastGuesses } = useSemantleContext();
+  const { hours, minutes, seconds } = useStopwatchContext();
   // TODO:
   // 1. #Guessses
   // 2. Time taken
@@ -14,7 +16,8 @@ const GameEnd = ({ newGame }) => {
   };
   return (
     <div className="game-end">
-      <h1>You Won!</h1>
+      {won && <h1>You Won!</h1>}
+      {!won && <h1>You Gave Up</h1>}
       <h2>Answer: {game.word}</h2>
       <div className="stats">
         <h3>Your stats</h3>
@@ -22,11 +25,15 @@ const GameEnd = ({ newGame }) => {
           <tbody>
             <tr>
               <td>Time taken</td>
-              <td>1h 10m 2s</td>
+              <td>
+                {hours > 0 && hours + "h "}
+                {minutes > 0 && minutes + "m "}
+                {seconds > 0 && seconds + "s"}
+              </td>
             </tr>
             <tr>
               <td>Guesses</td>
-              <td>{guessNum}</td>
+              <td>{Math.round(guessNum)}</td>
             </tr>
             <tr>
               <td>Closest guess</td>

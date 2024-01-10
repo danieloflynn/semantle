@@ -1,7 +1,7 @@
 import { useStopwatchContext } from "../hooks/useStopwatchContext";
 
 const Stopwatch = () => {
-  const { seconds, minutes, hours, start, stop, reset } = useStopwatchContext();
+  const { seconds, minutes, hours } = useStopwatchContext();
   const renderHours = () => {
     return <span>{`0${hours}`.slice(-2) + " : "}</span>;
   };

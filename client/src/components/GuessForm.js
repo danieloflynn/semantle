@@ -1,9 +1,11 @@
 import { useSemantleContext } from "../hooks/useSemantleContext";
 import { useState } from "react";
+import { useStopwatchContext } from "../hooks/useStopwatchContext";
 
 const GuessForm = ({ setFinished, setWon }) => {
   const [guess, setGuess] = useState("");
   const { game, pastGuesses, dispatch } = useSemantleContext();
+  const { pause } = useStopwatchContext();
   const [invalidMessage, setInvalidMessage] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -13,6 +15,7 @@ const GuessForm = ({ setFinished, setWon }) => {
     // Check if guess is correct
     if (guess === game.word) {
       setWon(true);
+      pause();
       return setFinished(true);
     }
 
