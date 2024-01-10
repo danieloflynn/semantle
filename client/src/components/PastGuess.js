@@ -1,10 +1,11 @@
 const PastGuess = (pastGuess) => {
   return (
-    <div className="past-guess">
-      <p>{pastGuess.pastGuess.simWord}</p>
-      <p>{pastGuess.pastGuess.rank}</p>
-      <p>{pastGuess.pastGuess.similarity} </p>
-    </div>
+    <tr>
+      <td>1</td>
+      <td>{pastGuess.pastGuess.simWord}</td>
+      <td>{pastGuess.pastGuess.rank}</td>
+      <td>{pastGuess.pastGuess.similarity}</td>
+    </tr>
   );
 };
 

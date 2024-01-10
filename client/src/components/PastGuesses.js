@@ -13,12 +13,12 @@ const PastGuesses = () => {
             <th>Rank</th>
             <th>Similarity</th>
           </tr>
+          {pastGuesses &&
+            pastGuesses.map((pastGuess) => (
+              <PastGuess key={pastGuess.simWord} pastGuess={pastGuess} />
+            ))}
         </tbody>
       </table>
-      {pastGuesses &&
-        pastGuesses.map((pastGuess) => (
-          <PastGuess key={pastGuess.simWord} pastGuess={pastGuess} />
-        ))}
     </div>
   );
 };
