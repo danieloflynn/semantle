@@ -3,6 +3,7 @@ import PastGuess from "./PastGuess";
 
 const PastGuesses = () => {
   const { pastGuesses } = useSemantleContext();
+
   return (
     <div className="container">
       <table>

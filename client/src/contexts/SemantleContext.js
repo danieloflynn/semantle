@@ -16,13 +16,15 @@ export const SemantleReducer = (state, action) => {
       return {
         game: state.game,
         guessNum: state.guessNum + 1,
-        pastGuesses: [action.payload, ...state.pastGuesses],
+        pastGuesses: [action.payload, ...state.pastGuesses].sort(
+          (a, b) => a.rank - b.rank
+        ),
       };
     case "SET_GUESSES":
       return {
         game: state.game,
         guessNum: state.guessNum,
-        pastGuesses: [...action.payload],
+        pastGuesses: [...action.payload].sort((a, b) => a.rank - b.rank),
       };
     default:
       return state;
