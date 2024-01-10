@@ -67,3 +67,10 @@ button {
   border: none;
   border-radius: 3px;
 }
+
+/* Past Guesses styling */
+
+.past-guess {
+  display: flex;
+  justify-content: space-evenly;
+}

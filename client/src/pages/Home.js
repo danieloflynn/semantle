@@ -11,7 +11,6 @@ const Home = () => {
   const newGame = async () => {
     const response = await fetch("/api/");
     const json = await response.json();
-    console.log(json);
     if (response.ok) {
       dispatch({
         type: "NEW_GAME",
