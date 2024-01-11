@@ -36,8 +36,39 @@ const getHint = async (req, res) => {
   res.status(200).json(response);
 };
 
-// Get 100 closest words
-const getClosest100 = () => {};
+// Get closest words
+const getClosest = async (req, res) => {
+  const { id } = req.params;
+  // Check that correct query param fed in
+  let closeNum;
+  try {
+    closeNum = parseInt(req.query.c);
+  } catch (e) {
+    return res.status(400).json({ error: "Invalid query parameter" });
+  }
+
+  console.log(req.query.c);
+  if (!mongoose.Types.ObjectId.isValid) {
+    return res.status(404).json({ error: "Could not find semantle" });
+  }
+
+  const word = await Semantle.aggregate([
+    { $match: { _id: new mongoose.Types.ObjectId(id) } },
+    { $unwind: { path: "$similarities" } },
+    { $match: { "similarities.rank": { $lt: closeNum } } },
+  ]);
+
+  // Unpack into a response
+  const response = word.map((word) => {
+    return {
+      simWord: word.similarities.simWord,
+      rank: word.similarities.rank,
+      word: word.similarities.similarity,
+    };
+  });
+
+  res.status(200).json(response);
+};
 
 // Check word similarity for a semantle
 const getSemantleWord = async (req, res) => {
@@ -117,7 +148,7 @@ const updateSemantle = async (req, res) => {
 module.exports = {
   getNewSemantle,
   getHint,
-  getClosest100,
+  getClosest,
   getSemantleWord,
   getSemantle,
   createSemantle,

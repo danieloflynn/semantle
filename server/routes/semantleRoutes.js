@@ -3,7 +3,7 @@ const router = express.Router();
 const {
   getNewSemantle,
   getHint,
-  getClosest100,
+  getClosest,
   getSemantleWord,
   getSemantle,
   createSemantle,
@@ -18,7 +18,7 @@ router.get("/", getNewSemantle);
 router.get("/:id/getHint", getHint);
 
 // Get 100 closest
-router.get("/:id/getClosest100", getClosest100);
+router.get("/:id/getClosest", getClosest);
 
 // Get a word similarity
 router.get("/:id/:word", getSemantleWord);
