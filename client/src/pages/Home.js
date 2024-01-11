@@ -5,6 +5,7 @@ import PastGuesses from "../components/PastGuesses";
 import GameEnd from "./GameEnd";
 import Stopwatch from "../components/Stopwatch";
 import { useStopwatchContext } from "../hooks/useStopwatchContext";
+import OptionButtons from "../components/OptionButtons";
 
 const Home = () => {
   const { dispatch } = useSemantleContext();
@@ -31,8 +32,9 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Stopwatch />
+      {!finished && <Stopwatch />}
       {!finished && <GuessForm setFinished={setFinished} setWon={setWon} />}
+      {!finished && <OptionButtons />}
       {!finished && <PastGuesses />}
       {finished && <GameEnd newGame={newGame} won={won} />}
     </div>
