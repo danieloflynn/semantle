@@ -23,11 +23,10 @@ const OptionButtons = ({ setFinished }) => {
       if (!json.valid) {
         setError("Could not get a hint at this time");
       }
-      console.log(json);
+
       // Make sure guess hasn't already been made
-      console.log("valid", json.valid);
+
       if (json.valid && !pastGuesses.some((e) => e.simWord === json.simWord)) {
-        console.log("Here");
         setError(null);
         return dispatch({ type: "NEW_HINT", payload: json });
       }
