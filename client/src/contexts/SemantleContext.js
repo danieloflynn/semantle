@@ -12,6 +12,17 @@ export const SemantleReducer = (state, action) => {
       };
     case "NEW_GUESS":
       action.payload.guessNum = state.guessNum;
+      action.payload.isHint = false;
+      return {
+        game: state.game,
+        guessNum: state.guessNum + 1,
+        pastGuesses: [action.payload, ...state.pastGuesses].sort(
+          (a, b) => a.rank - b.rank
+        ),
+      };
+    case "NEW_HINT":
+      action.payload.guessNum = state.guessNum;
+      action.payload.isHint = true;
       return {
         game: state.game,
         guessNum: state.guessNum + 1,
