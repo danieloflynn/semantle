@@ -34,7 +34,7 @@ const Home = () => {
     <div className="home">
       {!finished && <Stopwatch />}
       {!finished && <GuessForm setFinished={setFinished} setWon={setWon} />}
-      {!finished && <OptionButtons />}
+      {!finished && <OptionButtons setFinished={setFinished} />}
       {!finished && <PastGuesses />}
       {finished && <GameEnd newGame={newGame} won={won} />}
     </div>

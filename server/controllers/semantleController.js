@@ -28,9 +28,10 @@ const getHint = async (req, res) => {
 
   // Unpack into a response
   const response = {
+    valid: true,
     simWord: word[0].similarities.simWord,
     rank: word[0].similarities.rank,
-    word: word[0].similarities.similarity,
+    similarity: word[0].similarities.similarity,
   };
 
   res.status(200).json(response);
@@ -61,9 +62,10 @@ const getClosest = async (req, res) => {
   // Unpack into a response
   const response = word.map((word) => {
     return {
+      valid: true,
       simWord: word.similarities.simWord,
       rank: word.similarities.rank,
-      word: word.similarities.similarity,
+      similarity: word.similarities.similarity,
     };
   });
 
