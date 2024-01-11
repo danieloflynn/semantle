@@ -1,3 +1,4 @@
+import Closest100 from "../components/Closest100";
 import { useSemantleContext } from "../hooks/useSemantleContext";
 import { useStopwatchContext } from "../hooks/useStopwatchContext";
 
@@ -42,12 +43,18 @@ const GameEnd = ({ newGame, won }) => {
                   pastGuesses[pastGuesses.length - 1].simWord}
               </td>
             </tr>
-            <td>Average guess rank</td>
-            <td>{pastGuesses.length > 0 && getAvgGuessRank()}</td>
+            <tr>
+              <td>Average guess rank</td>
+              <td>{pastGuesses.length > 0 && getAvgGuessRank()}</td>
+            </tr>
           </tbody>
         </table>
       </div>
       <button onClick={newGame}>New Game</button>
+
+      <div className="closest-100">
+        <Closest100 />
+      </div>
     </div>
   );
 };
