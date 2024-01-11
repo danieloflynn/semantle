@@ -5,8 +5,8 @@ const PastGuesses = () => {
   const { pastGuesses } = useSemantleContext();
 
   return (
-    <div className="container">
-      <table>
+    <div className="past-guess-container">
+      <table className="past-guess-table">
         <tbody>
           <tr>
             <th>#</th>
