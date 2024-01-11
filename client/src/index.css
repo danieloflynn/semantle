@@ -4,6 +4,7 @@
 body {
   margin: 0;
   font-family: "Roboto Slab";
+  background-color: #f77f00;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -49,6 +50,13 @@ a {
   padding: 5px;
 }
 
+/* Game styling */
+.game {
+  min-height: 60vh;
+  background-color: #eae2b7;
+  border-radius: 10px;
+}
+
 /* Guess form styling */
 form {
   display: flex;
@@ -69,6 +77,16 @@ button {
   color: #eae2b7;
   border: none;
   border-radius: 3px;
+}
+
+.option-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.option-button {
+  min-width: 80px;
+  width: 30vw;
 }
 
 /* Past Guesses styling */

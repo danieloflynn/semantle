@@ -33,10 +33,12 @@ const Home = () => {
   return (
     <div className="home">
       {!finished && <Stopwatch />}
-      {!finished && <GuessForm setFinished={setFinished} setWon={setWon} />}
-      {!finished && <OptionButtons setFinished={setFinished} />}
-      {!finished && <PastGuesses />}
-      {finished && <GameEnd newGame={newGame} won={won} />}
+      <div className="game">
+        {!finished && <GuessForm setFinished={setFinished} setWon={setWon} />}
+        {!finished && <OptionButtons setFinished={setFinished} />}
+        {!finished && <PastGuesses />}
+        {finished && <GameEnd newGame={newGame} won={won} />}
+      </div>
     </div>
   );
 };

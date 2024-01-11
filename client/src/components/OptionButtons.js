@@ -17,6 +17,7 @@ const OptionButtons = ({ setFinished }) => {
 
     let retryCount = 0;
 
+    // Try 3 times to get a unique hint
     while (retryCount < 2) {
       const response = await fetch("/api/" + game._id + "/getHint");
       const json = await response.json();
@@ -37,10 +38,14 @@ const OptionButtons = ({ setFinished }) => {
   };
 
   return (
-    <div>
+    <div className="option-buttons">
       {error && <p>{error}</p>}
-      <button onClick={giveUp}>Give Up</button>
-      <button onClick={getHint}>Get Hint</button>
+      <button onClick={giveUp} className="option-button">
+        Give Up
+      </button>
+      <button onClick={getHint} className="option-button">
+        Get Hint
+      </button>
     </div>
   );
 };
