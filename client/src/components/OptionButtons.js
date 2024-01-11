@@ -39,6 +39,7 @@ const OptionButtons = ({ setFinished }) => {
 
   return (
     <div>
+      {error && <p>{error}</p>}
       <button onClick={giveUp}>Give Up</button>
       <button onClick={getHint}>Get Hint</button>
     </div>
