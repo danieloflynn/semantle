@@ -50,7 +50,11 @@ const GameEnd = ({ newGame, won }) => {
           </tbody>
         </table>
       </div>
-      <button onClick={newGame}>New Game</button>
+      <div id="new-game-div">
+        <button onClick={newGame} className="option-button">
+          New Game
+        </button>
+      </div>
 
       <div className="closest-100">
         <Closest100 />

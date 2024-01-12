@@ -124,3 +124,13 @@ th {
   display: flex;
   justify-content: end;
 }
+
+/* Game end */
+#new-game-div {
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#new-game {
+}
