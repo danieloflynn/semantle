@@ -21,10 +21,11 @@ const Closest100 = () => {
     getClosest100().then((response) => setClosest(response));
   }, [game._id]);
   return (
-    <div className="container">
+    <div>
+      <h2>Closest 100 guesses</h2>
       {error && <p>{error}</p>}
       {!error && (
-        <table>
+        <table className="past-guess-table">
           <tbody>
             <tr>
               <th>Guess</th>

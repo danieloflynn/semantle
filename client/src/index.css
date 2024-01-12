@@ -53,6 +53,7 @@ a {
 /* Game styling */
 .game {
   min-height: 60vh;
+  padding: 10px;
   background-color: #eae2b7;
   border-radius: 10px;
 }
@@ -83,6 +84,10 @@ button {
   color: #eae2b7;
   border: none;
   border-radius: 3px;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .option-buttons {
