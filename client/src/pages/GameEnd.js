@@ -51,7 +51,7 @@ const GameEnd = ({ newGame, won }) => {
         </table>
       </div>
       <div id="new-game-div">
-        <button onClick={newGame} className="option-button">
+        <button onClick={newGame} id="new-game-button">
           New Game
         </button>
       </div>

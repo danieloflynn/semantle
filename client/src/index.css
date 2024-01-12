@@ -4,7 +4,7 @@
 body {
   margin: 0;
   font-family: "Roboto Slab";
-  background-color: #f77f00;
+  background-color: #fcbf49;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -12,6 +12,12 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+h1,
+h2,
+h3 {
+  color: #eae2b7;
+  padding-left: 10px;
 }
 
 a {
@@ -54,7 +60,7 @@ a {
 .game {
   min-height: 60vh;
   padding: 10px;
-  background-color: #eae2b7;
+  background-color: #003049;
   border-radius: 10px;
 }
 
@@ -122,6 +128,7 @@ th {
   text-align: left;
   padding-left: 10px;
   padding-right: 10px;
+  color: #eae2b7;
 }
 
 /* Timer */
@@ -137,5 +144,7 @@ th {
   justify-content: space-evenly;
 }
 
-#new-game {
+#new-game-button {
+  min-width: 80px;
+  width: 60vw;
 }
