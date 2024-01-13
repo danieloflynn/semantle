@@ -17,7 +17,7 @@ router.get("/", getNewSemantle);
 // Get a hint
 router.get("/:id/getHint", getHint);
 
-// Get 100 closest
+// Get closest words
 router.get("/:id/getClosest", getClosest);
 
 // Get a word similarity

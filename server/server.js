@@ -31,9 +31,3 @@ mongoose
     });
   })
   .catch((err) => console.log(err));
-
-let db;
-
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the app!" });
-});
