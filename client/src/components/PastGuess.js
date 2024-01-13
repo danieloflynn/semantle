@@ -1,3 +1,4 @@
+// Renders a line in the guess table
 const PastGuess = (pastGuess) => {
   return (
     <tr>

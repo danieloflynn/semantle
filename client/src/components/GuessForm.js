@@ -1,3 +1,4 @@
+// Form for inputting guesses
 import { useSemantleContext } from "../hooks/useSemantleContext";
 import { useState } from "react";
 import { useStopwatchContext } from "../hooks/useStopwatchContext";
@@ -24,9 +25,14 @@ const GuessForm = ({ setFinished, setWon }) => {
       return setInvalidMessage("You've already guessed this");
     }
     const response = await fetch("/api/" + game._id + "/" + guess);
+
+    if (!response.ok) {
+      return setInvalidMessage("Network error.");
+    }
+
     const json = await response.json();
     if (!json.valid) {
-      setInvalidMessage("Word not found");
+      return setInvalidMessage("Word not found");
     }
     if (json.valid) {
       setInvalidMessage(null);

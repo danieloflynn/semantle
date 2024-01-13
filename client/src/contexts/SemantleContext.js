@@ -1,3 +1,4 @@
+// Context for the game and past guesses
 import { createContext, useReducer } from "react";
 
 export const SemantleContext = createContext();

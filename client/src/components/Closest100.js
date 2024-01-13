@@ -1,3 +1,4 @@
+// Renders the table of the closest 100 words to the target word at the end of the game
 import { useEffect, useState } from "react";
 import { useSemantleContext } from "../hooks/useSemantleContext";
 import PastGuess from "./PastGuess";
@@ -6,7 +7,8 @@ const Closest100 = () => {
   const { game } = useSemantleContext();
   const [error, setError] = useState(null);
   const [closest, setClosest] = useState(null);
-  // TODO: Check if need to use useEffect for closest100
+
+  // Only render the closest 100 page at the end of each new game
   useEffect(() => {
     const getClosest100 = async () => {
       const response = await fetch("/api/" + game._id + "/getClosest?c=101");
@@ -20,6 +22,7 @@ const Closest100 = () => {
     };
     getClosest100().then((response) => setClosest(response));
   }, [game._id]);
+
   return (
     <div>
       <h2>Closest 100 guesses</h2>

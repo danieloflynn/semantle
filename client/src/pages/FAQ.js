@@ -1,3 +1,5 @@
+// Display information about the game
+
 const FAQ = () => {
   return <div className="FAQ"></div>;
 };

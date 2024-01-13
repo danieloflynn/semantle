@@ -15,18 +15,16 @@ const OptionButtons = ({ setFinished }) => {
     // Don't reload the page
     e.preventDefault();
 
-    let retryCount = 0;
-
     // Try 3 times to get a unique hint
+    let retryCount = 0;
     while (retryCount < 2) {
       const response = await fetch("/api/" + game._id + "/getHint");
       const json = await response.json();
       if (!json.valid) {
-        setError("Could not get a hint at this time");
+        setError("Could not get a valid hint");
       }
 
       // Make sure guess hasn't already been made
-
       if (json.valid && !pastGuesses.some((e) => e.simWord === json.simWord)) {
         setError(null);
         return dispatch({ type: "NEW_HINT", payload: json });

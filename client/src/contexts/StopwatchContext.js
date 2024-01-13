@@ -1,3 +1,5 @@
+// Context for the stopwatch
+// Used in multiple components which is why context is needed
 import { createContext } from "react";
 import { useStopwatch } from "react-timer-hook";
 

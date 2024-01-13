@@ -1,3 +1,6 @@
+// Page displayed once the game ends
+// Shows game stats as well as the closest 100 words to the target word
+
 import Closest100 from "../components/Closest100";
 import { useSemantleContext } from "../hooks/useSemantleContext";
 import { useStopwatchContext } from "../hooks/useStopwatchContext";
@@ -5,16 +8,14 @@ import { useStopwatchContext } from "../hooks/useStopwatchContext";
 const GameEnd = ({ newGame, won }) => {
   const { game, guessNum, pastGuesses } = useSemantleContext();
   const { hours, minutes, seconds } = useStopwatchContext();
-  // TODO:
-  // 1. #Guessses
-  // 2. Time taken
-  // 3. Closest guess
-  // 4. Average guess rank
+
+  // Gets the average guess rank for stats
   const getAvgGuessRank = () => {
     let sum = 0;
     pastGuesses.map((e) => (sum += e.rank));
     return sum / pastGuesses.length;
   };
+
   return (
     <div className="game-end">
       {won && <h1>You Won!</h1>}

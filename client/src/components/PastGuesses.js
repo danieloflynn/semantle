@@ -1,3 +1,4 @@
+// Renders the table of past guesses
 import { useSemantleContext } from "../hooks/useSemantleContext";
 import PastGuess from "./PastGuess";
 
